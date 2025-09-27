@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>Traffic Light Detector</title>
+</head>
+<body>
+  <h1>อัพโหลดรูปเพื่อตรวจไฟจราจร</h1>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="อัพโหลด">
+  </form>
+
+  {% if filename %}
+    <h2>ผลลัพธ์</h2>
+    <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
+  <p><b>ไฟที่ตรวจเจอ:</b> {{ result }} ({{ conf|default(0)|float|round(2) }} %)</p>
+  {% endif %}
+</body>
+</html>
